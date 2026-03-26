@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mankan-menu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mankan-frontend
+  template:
+    metadata:
+      labels:
+        app: mankan-frontend
+    spec:
+      containers:
+        - name: mankan-frontend
+          image: sekou4991/mankan-menu:v5
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "0.25"
+              memory: "256Mi"
+            limits:
+              cpu: "0.5"
+              memory: "512Mi"
